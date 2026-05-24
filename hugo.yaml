@@ -1,0 +1,100 @@
+﻿baseURL: https://bmg.l2.ink/
+languageCode: zh-cn
+title: "极客碎语"
+theme: PaperMod
+
+# 分页
+pagination:
+  pagerSize: 8
+
+# 摘要
+summaryLength: 120
+
+# 启用 RSS
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# 语法高亮
+markup:
+  highlight:
+    style: catppuccin-mocha
+    noClasses: false
+    guessSyntax: true
+
+params:
+  # 主题模式（默认深色）
+  defaultTheme: dark
+  disableThemeToggle: false
+
+  # 首页信息
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowToc: true
+  TocOpen: false
+
+  # 编辑链接
+  editPost:
+    URL: ""
+    Text: "编辑"
+    appendFilePath: false
+
+  # 搜索（Fuse.js）
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys:
+      - title
+      - permalink
+      - summary
+      - content
+
+  # 个人信息
+  homeInfoParams:
+    Title: "你好 👋"
+    Content: >
+      欢迎来到我的博客。
+
+      这里记录技术笔记、生活感悟和小项目。
+
+  # 社交链接
+  socialIcons:
+    - name: github
+      url: "https://github.com/"
+    - name: rss
+      url: "/index.xml"
+
+  # 标签云
+  ShowAllPagesInArchive: true
+
+  # 版权
+  ShowFullTextinRSS: false
+
+menu:
+  main:
+    - identifier: posts
+      name: 文章
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 20
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 30
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 40

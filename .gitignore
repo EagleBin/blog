@@ -1,0 +1,27 @@
+# Hugo
+public/
+resources/
+.hugo_build.lock
+
+# 依赖
+node_modules/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 二进制
+bin/
+
+# 对话文件（非博客内容）
+对话.md
+
+# 部署密钥（禁止提交）
+deploy_key
+deploy_key.pub

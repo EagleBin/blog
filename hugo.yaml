@@ -40,6 +40,7 @@ params:
   author: "EagleBin"
   keywords: [Hugo, 静态博客, 技术, Go, Python, TypeScript]
   images: ["/images/og-image.png"]
+  googleSiteVerification: "Kb_4yWaQrR_j4ZrQUHqETsjB-o9Kcq2LuY7S0gpHRbk"
 
   # 主题模式（默认深色）
   defaultTheme: dark

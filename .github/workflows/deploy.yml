@@ -3,7 +3,7 @@ name: Deploy Hugo Blog
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -24,13 +24,13 @@ jobs:
       - name: Build
         run: hugo --minify --buildFuture
 
-      - name: Deploy to Server
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          rsync -avz --delete -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
-            public/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/blog/
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} \
-            "chown -R www-data:www-data /var/www/blog"
+          ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+          rsync -avz --delete public/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/blog/
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chown -R www-data:www-data /var/www/blog"

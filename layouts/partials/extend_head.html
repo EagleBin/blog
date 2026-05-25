@@ -1,0 +1,29 @@
+{{- /* SEO 增强：meta keywords + 搜索引擎验证 */ -}}
+
+{{- if .Params.keywords }}
+<meta name="keywords" content="{{ delimit .Params.keywords ", " }}">
+{{- else }}
+{{- with site.Params.keywords }}
+<meta name="keywords" content="{{ delimit . ", " }}">
+{{- end }}
+{{- end }}
+
+{{- if .Description }}
+<meta name="description" content="{{ .Description }}">
+{{- else }}
+{{- with .Summary }}
+<meta name="description" content="{{ . | plainify | truncate 160 }}">
+{{- end }}
+{{- end }}
+
+{{- with site.Params.googleSiteVerification }}
+<meta name="google-site-verification" content="{{ . }}">
+{{- end }}
+
+{{- with site.Params.bingSiteVerification }}
+<meta name="msvalidate.01" content="{{ . }}">
+{{- end }}
+
+{{- if and (not .IsHome) (.Permalink) }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- end }}

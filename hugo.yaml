@@ -3,6 +3,16 @@ languageCode: zh-cn
 title: "极客碎语"
 theme: PaperMod
 
+# SEO
+enableRobotsTXT: true
+enableEmoji: true
+
+# Sitemap
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+  filename: sitemap.xml
+
 # 分页
 pagination:
   pagerSize: 8
@@ -25,6 +35,12 @@ markup:
     guessSyntax: true
 
 params:
+  # 站点元数据（SEO）
+  description: "技术笔记、生活感悟与小项目 — Hugo + PaperMod 静态博客"
+  author: "EagleBin"
+  keywords: [Hugo, 静态博客, 技术, Go, Python, TypeScript]
+  images: ["/images/og-image.png"]
+
   # 主题模式（默认深色）
   defaultTheme: dark
   disableThemeToggle: false
